@@ -1,0 +1,137 @@
+body {
+    background-color: #eae8fe;
+}
+
+.header-img {
+    display: block;
+    height: 180px;
+    margin: 0 auto;
+    margin-bottom: 67px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    /* align-items: center; */
+}
+
+.txt-hide {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+/* 자판기 */
+.machine {
+    /* width: 360px; */
+    background-color: #ffffff;
+    padding: 31px 27px 28px;
+}
+
+/* 자판기 음료 목록 */
+.machine .machine-items {
+    background-color: pink;
+    margin-bottom: 20px;
+}
+
+.machine-items-list {
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    position: relative;
+}
+.machine-items-list li {
+    background-color: #ffffff;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+    width: 94px;
+    height: 130px;
+}
+.machine-items-list li:hover::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    content: "";
+    border: 3px solid #6327fe;
+    border-radius: 13px;
+}
+
+/* 매진된 항목 품절 처리 */
+/* .soldout::after {
+    position: absolute;
+    background-color: black;
+    width: inherit;
+    height: inherit;
+    content: "품절";
+} */
+
+/* 자판기 기능 */
+.machine .machine-func {
+    background-color: khaki;
+    display: grid;
+    grid-template-columns: 200fr 94fr;
+    grid-template-rows: 32fr 32fr 106fr;
+    grid-template-areas: none;
+    grid-template-areas:
+        "balance btn-charge"
+        "input-payment btn-payment"
+        "selected-list btn-get";
+    gap: 12px;
+}
+.machine-func .balance {
+    grid-area: balance;
+    background-color: darkgrey;
+}
+.machine-func .btn-charge {
+    grid-area: btn-charge;
+}
+.machine-func .input-payment {
+    grid-area: input-payment;
+}
+.machine-func .btn-payment {
+    grid-area: btn-payment;
+}
+.machine-func .selected-list {
+    grid-area: selected-list;
+    background-color: pink;
+}
+.machine-func .selected-list ol {
+    height: 106px;
+    overflow: scroll;
+}
+.machine-func .btn-get {
+    grid-area: btn-get;
+}
+.pocket {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    background-color: bisque;
+}
+
+/* 소지금 */
+.pocket .wallet {
+    margin-bottom: 21px;
+    background-color: burlywood;
+}
+
+/* 획득한 음료 */
+.pocket .earned {
+    background-color: lightgreen;
+}
+
+/* 모바일 버전 */
+@media screen and (max-width: 360px) {
+    body {
+    }
+    .header-img {
+        height: 78px;
+    }
+}
