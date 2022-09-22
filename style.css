@@ -52,15 +52,8 @@ body {
     width: 94px;
     height: 130px;
 }
-.machine-items-list li:hover::after {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    content: "";
-    border: 3px solid #6327fe;
-    border-radius: 13px;
+.machine-items-list li:hover {
+    outline: 3px solid #6327fe;
 }
 
 /* 매진된 항목 품절 처리 */
