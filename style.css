@@ -57,6 +57,9 @@ body {
 .machine-items-list li:hover {
     outline: 3px solid #6327fe;
 }
+/* 클릭했을 때 */
+.machine-items-list li:active {
+}
 .items-img {
     margin: 0 auto;
     margin-top: 11px;

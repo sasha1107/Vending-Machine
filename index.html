@@ -80,5 +80,43 @@
                 <article class="earned">획득한 음료</article>
             </div>
         </section>
+        <script>
+            var drinks = {
+                original: {
+                    price: 1000,
+                    count: 0,
+                },
+                violet: {
+                    price: 1000,
+                    count: 1,
+                },
+                yellow: {
+                    price: 1000,
+                    count: 2,
+                },
+                cool: {
+                    price: 1000,
+                    count: 3,
+                },
+                green: {
+                    price: 1000,
+                    count: 4,
+                },
+                orange: {
+                    price: 1000,
+                    count: 5,
+                },
+            };
+            var walletCoin = 25000; //소지금
+            var inputCoin = 18000; // 입금액
+
+            var totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
+            for (let i = 0; i < Object.keys(drinks).length; i++) {
+                totalPrice += 1000 * parseInt(Object.values(drinks)[i].count);
+            }
+            var balance = inputCoin - totalPrice; //잔액
+
+            console.log(balance);
+        </script>
     </body>
 </html>
