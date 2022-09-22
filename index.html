@@ -16,7 +16,7 @@
             </h1>
         </header>
         <section class="container">
-            <h2 class="txt-hide">main-container</h2>
+            <h2 class="txt-hide">메인 컨테이너</h2>
             <article class="machine">
                 <h3 class="txt-hide">자판기</h3>
                 <div class="machine-items">
@@ -25,59 +25,163 @@
                         <li>
                             <div class="items-img original_cola"></div>
                             Original_cola
+                            <span
+                                id="pricetag_original"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                         <li class="soldout">
                             <div class="items-img violet_cola"></div>
                             Violet_cola
+                            <span
+                                id="pricetag_violet"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                         <li>
                             <div class="items-img yellow_cola"></div>
                             Yellow_Cola
+                            <span
+                                id="pricetag_yellow"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                         <li>
                             <div class="items-img cool_cola"></div>
                             Cool_Cola
+                            <span
+                                id="pricetag_cool"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                         <li>
                             <div class="items-img green_cola"></div>
                             Green_Cola
+                            <span
+                                id="pricetag_green"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                         <li>
                             <div class="items-img orange_cola"></div>
                             Orange_Cola
+                            <span
+                                id="pricetag_orange"
+                                class="items-pricetag"
+                            ></span>
                         </li>
                     </ol>
                 </div>
                 <div class="machine-func">
-                    <span class="balance">잔액: @@@원</span>
-                    <button class="btn-change">거스름돈 반환</button>
+                    <div class="balance">
+                        <h4>잔액:</h4>
+                        <span id="balance_result">0원</span>
+                    </div>
+                    <button class="btn-change" onclick="changeBalance()">
+                        거스름돈 반환
+                    </button>
+                    <!-- 숫자만 입려될 수 있도록 정규식표현 사용-->
                     <input
                         type="text"
+                        onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
                         class="input-payment"
                         placeholder="입금액 입력"
+                        id="input-deposit"
                     />
-                    <button class="btn-payment">입금</button>
-                    <div class="selected-list">
-                        <h5 class="txt-hide">선택한 음료 리스트</h5>
-                        <ol>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
-                            <li>선택</li>
+                    <button
+                        class="btn-payment"
+                        type="button"
+                        button인가
+                        submit인가
+                        onclick="deposit()"
+                    >
+                        <!--type: button인가 submit인가 -->
+                        입금
+                    </button>
+                    <div class="selected">
+                        <h4 class="txt-hide">선택한 음료 리스트</h4>
+                        <ol class="selected-list">
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
+                            <li class="get-drinks">
+                                c original_cola <span id="count">1</span>
+                            </li>
                         </ol>
                     </div>
                     <button class="btn-get">획득</button>
                 </div>
             </article>
             <div class="pocket">
-                <article class="wallet">소지금</article>
-                <article class="earned">획득한 음료</article>
+                <article class="wallet">
+                    <h3 class="txt-hide">소지금, 획득한 음료</h3>
+                    <div class="wallet-box">
+                        <h4>소지금:</h4>
+                        <span id="wallet_coin">0원</span>
+                    </div>
+                </article>
+                <article class="earned">
+                    <h4>획득한 음료</h4>
+                    <ol class="selected-list">
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                        <li class="get-drinks">
+                            c original_cola <span id="count">1</span>
+                        </li>
+                    </ol>
+                    <span id="total_price" class="total-price">
+                        총금액: 0원
+                    </span>
+                </article>
             </div>
         </section>
         <script>
@@ -116,7 +220,40 @@
             }
             var balance = inputCoin - totalPrice; //잔액
 
-            console.log(balance);
+            // 인풋창에서 입금액 입력 시 더해주는 함수
+            function deposit() {
+                inputCoin = parseInt(
+                    document.getElementById("input-deposit").value
+                );
+                balance += inputCoin;
+                // 입금 시 소지금에서 차감
+                walletCoin -= inputCoin;
+            }
+
+            // 거스름돈을 반환하는 함수
+            function changeBalance() {
+                walletCoin += balance;
+                balance = 0;
+            }
+
+            // drinks 객체에 있는 금액을 변경하면 바로 가격이 반영될 수 있도록 처리
+            for (let i = 0; i < Object.keys(drinks).length; i++) {
+                var key = Object.keys(drinks)[i];
+                document.getElementById("pricetag_" + key).innerHTML =
+                    Object.values(drinks)[i].price + "원";
+            }
+
+            // 잔액을 찍어주는 코드
+            document.getElementById("balance_result").innerHTML =
+                balance + "원";
+
+            //소지금을 찍어주는 코드
+            document.getElementById("wallet_coin").innerHTML =
+                walletCoin + "원";
+
+            //총금액을 찍어주는 코드
+            document.getElementById("total_price").innerHTML =
+                "총금액 : " + totalPrice + "원";
         </script>
     </body>
 </html>

@@ -1,3 +1,10 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+}
+
 body {
     background-color: #eae8fe;
 }
@@ -44,6 +51,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
     position: relative;
+    font-size: 9px;
+    line-height: 13px;
 }
 .machine-items-list li {
     background-color: #ffffff;
@@ -51,23 +60,38 @@ body {
     border-radius: 10px;
     width: 94px;
     height: 130px;
-    position: relative;
     text-align: center;
+    box-sizing: border-box;
+    padding: 11px 11px 9px 13px;
+    cursor: pointer;
 }
 .machine-items-list li:hover {
     outline: 3px solid #6327fe;
 }
 /* 클릭했을 때 */
 .machine-items-list li:active {
+    background-color: #6327fe;
+    color: #ffffff;
 }
 .items-img {
     margin: 0 auto;
-    margin-top: 11px;
-    margin-bottom: 6px;
+    /* margin-top: 11px; */
+    margin-bottom: 3px;
     width: 36px;
     height: 65px;
     background-image: url(./mediaquery/cola_sprites.png);
     background-size: 276px 75px;
+}
+.items-pricetag {
+    display: block;
+    margin-top: 6px;
+    background: #6327fe;
+    color: #ffffff;
+    border-radius: 50px;
+    /* width: 70px; */
+    height: auto;
+    padding: 5px 16px 5px 15px;
+    font-size: 12px;
 }
 .original_cola {
     background-position: -97px -5px;
@@ -98,59 +122,179 @@ body {
 
 /* 자판기 기능 */
 .machine .machine-func {
-    background-color: khaki;
     display: grid;
     grid-template-columns: 200fr 94fr;
-    grid-template-rows: 32fr 32fr 106fr;
+    grid-template-rows: 33fr 32fr 106fr;
     grid-template-areas: none;
     grid-template-areas:
-        "balance btn-charge"
+        "balance btn-change"
         "input-payment btn-payment"
-        "selected-list btn-get";
+        "selected btn-get";
     gap: 12px;
 }
 .machine-func .balance {
     grid-area: balance;
-    background-color: darkgrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px 7px;
+    background-color: #eae8fe;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 20px;
 }
-.machine-func .btn-charge {
-    grid-area: btn-charge;
+/* 잔액 : */
+.balance span:nth-child(1),
+.wallet-box span:nth-child(1) {
+    /* background-color: slateblue; */
+    /* flex-grow: 0; */
+    flex-shrink: 1;
+}
+.balance span:nth-child(2),
+.wallet-box span:nth-child(2) {
+    /* background-color: saddlebrown; */
+    width: inherit;
+    text-align: right;
+    flex-grow: 1;
+    overflow: scroll;
+    /* flex-basis: calc(200px-10px-10px-47px); */
+    font-weight: 700;
+}
+.machine-func .btn-change {
+    grid-area: btn-change;
 }
 .machine-func .input-payment {
     grid-area: input-payment;
+    box-sizing: border-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 6px;
 }
 .machine-func .btn-payment {
     grid-area: btn-payment;
 }
-.machine-func .selected-list {
-    grid-area: selected-list;
-    background-color: pink;
+.machine-func .btn-change,
+.machine-func .btn-payment {
+    background-color: #ffffff;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 19px;
 }
-.machine-func .selected-list ol {
+.machine-func .btn-change:hover,
+.machine-func .btn-payment:hover {
+    background-color: #eae8fe;
+}
+.machine-func .btn-change:active,
+.machine-func .btn-payment:active {
+    background-color: #6327fe;
+    color: #ffffff;
+}
+.machine-func .selected {
+    box-sizing: border-box;
+    grid-area: selected;
+    background-color: #eae8fe;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
     height: 106px;
     overflow: scroll;
+    padding: 12px 18px 12px 12px;
+}
+.machine-func .selected .selected-list {
+    border-style: none;
+    /* height: 106px; */
+    overflow: scroll;
+    /* padding: 12px 18px 12px 12px; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 6px; */
+}
+.get-drinks {
+    display: flex;
+    justify-content: space-between;
+    height: 46px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 8px 8px 10px;
+    align-items: center;
+    font-size: 9px;
+}
+#count {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.get-drinks + .get-drinks {
+    margin-top: 6px;
 }
 .machine-func .btn-get {
     grid-area: btn-get;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background: #6327fe;
+    color: #ffffff;
+}
+.machine-func .btn-get:hover,
+.machine-func .btn-get:active {
+    background-color: #eb5757;
 }
 .pocket {
     display: flex;
     flex-direction: column;
     width: 360px;
-    background-color: bisque;
+    /* background-color: bisque; */
+    /* gap: 20px; */
+    justify-content: space-between;
 }
 
 /* 소지금 */
 .pocket .wallet {
-    margin-bottom: 21px;
-    background-color: burlywood;
+    background-color: #ffffff;
+    padding: 9px 27px;
 }
-
+.pocket .wallet .wallet-box {
+    background-color: #eae8fe;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 5px;
+    padding: 6px 10px;
+}
 /* 획득한 음료 */
 .pocket .earned {
-    background-color: lightgreen;
+    background-color: #ffffff;
+    padding: 25px 27px 26px;
+    text-align: right;
 }
-
+.pocket .earned h4 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+.pocket .earned .selected-list {
+    box-sizing: border-box;
+    background: #eae8fe;
+    overflow: scroll;
+    padding: 12px 18px 12px 12px;
+    margin-top: 16px;
+    height: 364px;
+}
+.pocket .earned .total-price {
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 6px;
+}
 /* 화면이 작아졌을 때 배치를 세로로 */
 @media screen and (max-width: 748px) {
     body {
