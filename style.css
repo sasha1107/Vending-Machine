@@ -51,11 +51,39 @@ body {
     border-radius: 10px;
     width: 94px;
     height: 130px;
+    position: relative;
+    text-align: center;
 }
 .machine-items-list li:hover {
     outline: 3px solid #6327fe;
 }
-
+.items-img {
+    margin: 0 auto;
+    margin-top: 11px;
+    margin-bottom: 6px;
+    width: 36px;
+    height: 65px;
+    background-image: url(./mediaquery/cola_sprites.png);
+    background-size: 276px 75px;
+}
+.original_cola {
+    background-position: -97px -5px;
+}
+.violet_cola {
+    background-position: -5px -5px;
+}
+.yellow_cola {
+    background-position: -51px -5px;
+}
+.cool_cola {
+    background-position: -143px -5px;
+}
+.green_cola {
+    background-position: -189px -5px;
+}
+.orange_cola {
+    background-position: -235px -5px;
+}
 /* 매진된 항목 품절 처리 */
 /* .soldout::after {
     position: absolute;
@@ -120,6 +148,18 @@ body {
     background-color: lightgreen;
 }
 
+/* 화면이 작아졌을 때 배치를 세로로 */
+@media screen and (max-width: 748px) {
+    body {
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 28px;
+        align-items: center;
+    }
+}
 /* 모바일 버전 */
 @media screen and (max-width: 360px) {
     body {
