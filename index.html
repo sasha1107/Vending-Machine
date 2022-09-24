@@ -91,13 +91,11 @@
                     <button
                         class="btn-payment"
                         type="button"
-                        button인가
-                        submit인가
                         onclick="deposit()"
                     >
-                        <!--type: button인가 submit인가 -->
                         입금
                     </button>
+                    <!-- button type: button인가 submit인가 -->
                     <div class="selected">
                         <h4 class="txt-hide">선택한 음료 리스트</h4>
                         <ol class="selected-list">
@@ -216,7 +214,9 @@
 
             var totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
             for (let i = 0; i < Object.keys(drinks).length; i++) {
-                totalPrice += 1000 * parseInt(Object.values(drinks)[i].count);
+                totalPrice +=
+                    parseInt(Object.values(drinks)[i].price) *
+                    parseInt(Object.values(drinks)[i].count);
             }
             var balance = inputCoin - totalPrice; //잔액
 
@@ -225,15 +225,33 @@
                 inputCoin = parseInt(
                     document.getElementById("input-deposit").value
                 );
+                if (inputCoin > walletCoin) {
+                    alert("소지금보다 많은 금액을 입금할 수 없습니다!");
+                    return;
+                }
                 balance += inputCoin;
                 // 입금 시 소지금에서 차감
                 walletCoin -= inputCoin;
+
+                // 잔액 증가
+                document.getElementById("balance_result").innerHTML =
+                    balance + "원";
+                // 소지금 차감
+                document.getElementById("wallet_coin").innerHTML =
+                    walletCoin + "원";
             }
 
             // 거스름돈을 반환하는 함수
             function changeBalance() {
                 walletCoin += balance;
                 balance = 0;
+
+                // 잔액 차감
+                document.getElementById("balance_result").innerHTML =
+                    balance + "원";
+                // 소지금 증가
+                document.getElementById("wallet_coin").innerHTML =
+                    walletCoin + "원";
             }
 
             // drinks 객체에 있는 금액을 변경하면 바로 가격이 반영될 수 있도록 처리
