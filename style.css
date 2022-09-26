@@ -2,6 +2,7 @@
 
 * {
     font-family: "Noto Sans KR", sans-serif;
+    font-style: normal;
     font-weight: 500;
 }
 
@@ -71,7 +72,7 @@ body {
     outline: 3px solid #6327fe;
 }
 /* 클릭했을 때 */
-.machine-items-list li:active {
+.machine-items-list li:active:not(.soldout) {
     background-color: #6327fe;
     color: #ffffff;
 }
@@ -230,8 +231,17 @@ body {
     align-items: center;
     font-size: 9px;
 }
+.get-drinks .get-drinks-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.get-drinks .get-drinks-item img {
+    width: 18px;
+    margin-right: 10px;
+}
 
-#count {
+.count {
     box-sizing: border-box;
     width: 30px;
     height: 30px;
