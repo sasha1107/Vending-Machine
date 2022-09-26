@@ -320,8 +320,16 @@ body {
 /* 모바일 버전 */
 @media screen and (max-width: 360px) {
     body {
+        background-color: white;
     }
     .header-img {
         height: 78px;
+        margin-bottom: 18px;
+    }
+    .container {
+        gap: 0;
+    }
+    .pocket {
+        gap: calc(55px - 34px);
     }
 }
