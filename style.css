@@ -64,6 +64,7 @@ body {
     box-sizing: border-box;
     padding: 11px 11px 9px 13px;
     cursor: pointer;
+    position: relative;
 }
 .machine-items-list li:hover {
     outline: 3px solid #6327fe;
@@ -73,6 +74,22 @@ body {
     background-color: #6327fe;
     color: #ffffff;
 }
+/* 매진된 항목 품절 처리 */
+.soldout::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(./mediaquery/Sold-out.png);
+    background-size: 62%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: inherit;
+    width: inherit;
+    height: inherit;
+}
+
 .items-img {
     margin: 0 auto;
     /* margin-top: 11px; */
@@ -111,14 +128,6 @@ body {
 .orange_cola {
     background-position: -235px -5px;
 }
-/* 매진된 항목 품절 처리 */
-/* .soldout::after {
-    position: absolute;
-    background-color: black;
-    width: inherit;
-    height: inherit;
-    content: "품절";
-} */
 
 /* 자판기 기능 */
 .machine .machine-func {
@@ -219,6 +228,7 @@ body {
     align-items: center;
     font-size: 9px;
 }
+
 #count {
     box-sizing: border-box;
     width: 30px;
