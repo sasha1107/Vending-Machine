@@ -66,7 +66,8 @@ body {
     cursor: pointer;
     position: relative;
 }
-.machine-items-list li:hover {
+/* soldout 클래스는 아웃라인 안보이게 적용 */
+.machine-items-list li:hover:not(.soldout) {
     outline: 3px solid #6327fe;
 }
 /* 클릭했을 때 */
@@ -79,7 +80,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    content: "";
+    content: "품절";
+    color: transparent;
     background-color: rgba(0, 0, 0, 0.8);
     background-image: url(./mediaquery/Sold-out.png);
     background-size: 62%;
@@ -96,8 +98,8 @@ body {
     margin-bottom: 3px;
     width: 36px;
     height: 65px;
-    background-image: url(./mediaquery/cola_sprites.png);
-    background-size: 276px 75px;
+    /* background-image: url(./mediaquery/cola_sprites.png); */
+    /* background-size: 276px 75px; */
 }
 .items-pricetag {
     display: block;
@@ -110,7 +112,7 @@ body {
     padding: 5px 16px 5px 15px;
     font-size: 12px;
 }
-.original_cola {
+/* .original_cola {
     background-position: -97px -5px;
 }
 .violet_cola {
@@ -127,7 +129,7 @@ body {
 }
 .orange_cola {
     background-position: -235px -5px;
-}
+} */
 
 /* 자판기 기능 */
 .machine .machine-func {

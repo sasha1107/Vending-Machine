@@ -23,52 +23,38 @@
                     <h4 class="txt-hide">음료 목록</h4>
                     <ol class="machine-items-list">
                         <li>
-                            <div class="items-img original_cola"></div>
-                            Original_cola
-                            <span
-                                id="pricetag_original"
-                                class="items-pricetag"
-                            ></span>
+                            <img
+                                class="items-img"
+                                src="#"
+                                alt="Original_Cola"
+                            />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                         <li class="soldout">
-                            <div class="items-img violet_cola"></div>
-                            Violet_cola
-                            <span
-                                id="pricetag_violet"
-                                class="items-pricetag"
-                            ></span>
+                            <img class="items-img" src="#" alt="Violet_Cola" />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                         <li>
-                            <div class="items-img yellow_cola"></div>
-                            Yellow_Cola
-                            <span
-                                id="pricetag_yellow"
-                                class="items-pricetag"
-                            ></span>
+                            <img class="items-img" src="#" alt="Yellow_Cola" />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                         <li>
-                            <div class="items-img cool_cola"></div>
-                            Cool_Cola
-                            <span
-                                id="pricetag_cool"
-                                class="items-pricetag"
-                            ></span>
+                            <img class="items-img" src="#" alt="Cool_Cola" />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                         <li>
-                            <div class="items-img green_cola"></div>
-                            Green_Cola
-                            <span
-                                id="pricetag_green"
-                                class="items-pricetag"
-                            ></span>
+                            <img class="items-img" src="#" alt="Green_Cola" />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                         <li>
-                            <div class="items-img orange_cola"></div>
-                            Orange_Cola
-                            <span
-                                id="pricetag_orange"
-                                class="items-pricetag"
-                            ></span>
+                            <img class="items-img" src="#" alt="Orange_Cola" />
+                            <p class="items-name"></p>
+                            <span class="items-pricetag"></span>
                         </li>
                     </ol>
                 </div>
@@ -185,31 +171,43 @@
         <script>
             var drinks = {
                 original: {
+                    name: "Original_Cola",
+                    img: "/mediaquery/Original_Cola.png",
                     price: 1000,
                     count: 0,
                     stock: 0,
                 },
                 violet: {
+                    name: "Violet_Cola",
+                    img: "./mediaquery/Violet_Cola.png",
                     price: 1000,
                     count: 1,
                     stock: 0,
                 },
                 yellow: {
+                    name: "Yellow_Cola",
+                    img: "./mediaquery/Yellow_Cola.png",
                     price: 1000,
                     count: 2,
                     stock: 0,
                 },
                 cool: {
+                    name: "Cool_Cola",
+                    img: "./mediaquery/Cool_Cola.png",
                     price: 1000,
                     count: 3,
                     stock: 0,
                 },
                 green: {
+                    name: "Green_Cola",
+                    img: "./mediaquery/Green_Cola.png",
                     price: 1000,
                     count: 4,
                     stock: 0,
                 },
                 orange: {
+                    name: "Orange_Cola",
+                    img: "./mediaquery/Orange_Cola.png",
                     price: 1000,
                     count: 5,
                     stock: 0,
@@ -260,11 +258,17 @@
                     walletCoin + "원";
             }
 
-            // drinks 객체에 있는 금액을 변경하면 바로 가격이 반영될 수 있도록 처리
+            // drinks 객체에 있는 이미지경로, 금액, 상품 이름을 변경하면 바로 가격이 반영될 수 있도록 처리
+            drink_list = document.getElementsByClassName("items-img");
+            pricetag_list = document.getElementsByClassName("items-pricetag");
+            drinks_name = document.getElementsByClassName("items-name");
             for (let i = 0; i < Object.keys(drinks).length; i++) {
-                var key = Object.keys(drinks)[i];
-                document.getElementById("pricetag_" + key).innerHTML =
-                    Object.values(drinks)[i].price + "원";
+                var src = Object.values(drinks)[i].img;
+                var price = Object.values(drinks)[i].price;
+                var name = Object.values(drinks)[i].name;
+                pricetag_list[i].innerHTML = price + "원";
+                drink_list[i].src = src;
+                drinks_name[i].innerHTML = name;
             }
 
             // 잔액을 찍어주는 코드
