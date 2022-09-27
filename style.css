@@ -155,23 +155,7 @@ body {
     font-size: 14px;
     line-height: 20px;
 }
-/* 잔액 : */
-.balance span:nth-child(1),
-.wallet-box span:nth-child(1) {
-    /* background-color: slateblue; */
-    /* flex-grow: 0; */
-    flex-shrink: 1;
-}
-.balance span:nth-child(2),
-.wallet-box span:nth-child(2) {
-    /* background-color: saddlebrown; */
-    width: inherit;
-    text-align: right;
-    flex-grow: 1;
-    overflow: scroll;
-    /* flex-basis: calc(200px-10px-10px-47px); */
-    font-weight: 700;
-}
+
 .machine-func .btn-change {
     grid-area: btn-change;
 }

@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" href="reset.css" />
         <link rel="stylesheet" href="style.css" />
+        <!-- <link rel="stylesheet" href="style_scss.css" /> -->
     </head>
     <body>
         <header>
@@ -64,9 +65,9 @@
                     </button>
                     <!-- 숫자만 입려될 수 있도록 정규식표현 사용-->
                     <input
+                        class="input-payment"
                         type="text"
                         onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-                        class="input-payment"
                         placeholder="입금액 입력"
                         id="input-deposit"
                     />
