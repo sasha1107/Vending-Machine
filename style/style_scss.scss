@@ -1,5 +1,9 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+// 변수 생성
+$lightpurple: #eae8fe;
+$deeppurple: #6327fe;
+
 * {
     font-family: "Noto Sans KR", sans-serif;
     font-style: normal;
@@ -15,7 +19,7 @@
 }
 
 body {
-    background-color: #eae8fe;
+    background-color: $lightpurple;
 }
 
 header {
@@ -73,7 +77,7 @@ header {
             .items-pricetag {
                 display: block;
                 margin-top: 6px;
-                background: #6327fe;
+                background: $deeppurple;
                 color: #ffffff;
                 border-radius: 50px;
                 /* width: 70px; */
@@ -82,10 +86,10 @@ header {
                 font-size: 12px;
             }
             &:hover:not(.soldout) {
-                outline: 3px solid #6327fe;
+                outline: 3px solid $deeppurple;
             }
             &:active:not(.soldout) {
-                background-color: #6327fe;
+                background-color: $deeppurple;
                 color: #ffffff;
             }
         }
@@ -124,7 +128,7 @@ header {
         justify-content: space-between;
         align-items: center;
         padding: 6px 10px 7px;
-        background-color: #eae8fe;
+        background-color: $lightpurple;
         border-radius: 5px;
         font-size: 14px;
         line-height: 20px;
@@ -151,17 +155,17 @@ header {
         font-size: 13px;
         line-height: 19px;
         &:hover {
-            background-color: #eae8fe;
+            background-color: $lightpurple;
         }
         &:active {
-            background-color: #6327fe;
+            background-color: $deeppurple;
             color: #ffffff;
         }
     }
     .selected {
         box-sizing: border-box;
         grid-area: selected;
-        background-color: #eae8fe;
+        background-color: $lightpurple;
         border: 1px solid #bdbdbd;
         border-radius: 5px;
         height: 106px;
@@ -173,7 +177,7 @@ header {
         grid-area: btn-get;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
         border-radius: 5px;
-        background: #6327fe;
+        background: $deeppurple;
         color: #ffffff;
         &:hover,
         &:active {
@@ -236,7 +240,7 @@ header {
         padding: 9px 27px;
 
         .wallet-box {
-            background-color: #eae8fe;
+            background-color: $lightpurple;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -259,7 +263,7 @@ header {
         }
         .selected-list {
             box-sizing: border-box;
-            background: #eae8fe;
+            background: $lightpurple;
             overflow: scroll;
             padding: 12px 18px 12px 12px;
             margin-top: 16px;
