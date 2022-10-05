@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./style/reset.css" />
         <link rel="stylesheet" href="./style/style.css" />
         <!-- <link rel="stylesheet" href="./style/style_scss.css" /> -->
+        <!-- <script src="/script.js"></script> -->
     </head>
     <body>
         <header>
@@ -27,32 +28,32 @@
                 <div class="machine-items">
                     <h4 class="txt-hide">음료 목록</h4>
                     <ol class="machine-items-list">
-                        <li class="item-li">
+                        <li class="item-li" id="item-0" onclick="selectItem(0)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
                         </li>
-                        <li class="item-li">
+                        <li class="item-li" id="item-1" onclick="selectItem(1)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
                         </li>
-                        <li class="item-li">
+                        <li class="item-li" id="item-2" onclick="selectItem(2)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
                         </li>
-                        <li class="item-li">
+                        <li class="item-li" id="item-3" onclick="selectItem(3)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
                         </li>
-                        <li class="item-li">
+                        <li class="item-li" id="item-4" onclick="selectItem(4)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
                         </li>
-                        <li class="item-li">
+                        <li class="item-li" id="item-5" onclick="selectItem(5)">
                             <img class="items-img" src="#" alt="#" />
                             <p class="items-name"></p>
                             <span class="items-pricetag"></span>
@@ -85,7 +86,7 @@
                     <!-- button type: button인가 submit인가 -->
                     <div class="selected">
                         <h4 class="txt-hide">선택한 음료 리스트</h4>
-                        <ol class="selected-list">
+                        <ol class="selected-list"  id="tagarea">
                             <li class="get-drinks">
                                 <p class="get-drinks-item">
                                     <img
@@ -95,36 +96,6 @@
                                     Original_Cola
                                 </p>
                                 <span class="count">1</span>
-                            </li>
-                            <li class="get-drinks">
-                                <p class="get-drinks-item">
-                                    <img
-                                        src="./mediaquery/Green_Cola.png"
-                                        alt="Green Cola"
-                                    />
-                                    Green_Cola
-                                </p>
-                                <span class="count">2</span>
-                            </li>
-                            <li class="get-drinks">
-                                <p class="get-drinks-item">
-                                    <img
-                                        src="./mediaquery/Orange_Cola.png"
-                                        alt="Orange Cola"
-                                    />
-                                    Orange_Cola
-                                </p>
-                                <span class="count">1</span>
-                            </li>
-                            <li class="get-drinks">
-                                <p class="get-drinks-item">
-                                    <img
-                                        src="./mediaquery/Violet_Cola.png"
-                                        alt="Violet Cola"
-                                    />
-                                    Violet_Cola
-                                </p>
-                                <span class="count">5</span>
                             </li>
                         </ol>
                     </div>
@@ -148,39 +119,9 @@
                                     src="./mediaquery/Original_Cola.png"
                                     alt="Original Cola"
                                 />
-                                Original_Cola
+                                <span class="get-drinks-item-name">Original_Cola</span>
                             </p>
                             <span class="count">1</span>
-                        </li>
-                        <li class="get-drinks">
-                            <p class="get-drinks-item">
-                                <img
-                                    src="./mediaquery/Green_Cola.png"
-                                    alt="Green Cola"
-                                />
-                                Green_Cola
-                            </p>
-                            <span class="count">2</span>
-                        </li>
-                        <li class="get-drinks">
-                            <p class="get-drinks-item">
-                                <img
-                                    src="./mediaquery/Orange_Cola.png"
-                                    alt="Orange Cola"
-                                />
-                                Orange_Cola
-                            </p>
-                            <span class="count">1</span>
-                        </li>
-                        <li class="get-drinks">
-                            <p class="get-drinks-item">
-                                <img
-                                    src="./mediaquery/Violet_Cola.png"
-                                    alt="Violet Cola"
-                                />
-                                Violet_Cola
-                            </p>
-                            <span class="count">5</span>
                         </li>
                     </ol>
                     <span id="total_price" class="total-price">
@@ -202,14 +143,14 @@
                     name: "Original_Cola",
                     img: "./mediaquery/Original_Cola.png",
                     price: 1000,
-                    count: 1,
+                    count: 0,
                     stock: 1,
                 },
                 violet: {
                     name: "Violet_Cola",
                     img: "./mediaquery/Violet_Cola.png",
                     price: 1000,
-                    count: 5,
+                    count: 0,
                     stock: 0,
                 },
                 yellow: {
@@ -230,14 +171,14 @@
                     name: "Green_Cola",
                     img: "./mediaquery/Green_Cola.png",
                     price: 1000,
-                    count: 2,
+                    count: 0,
                     stock: 1,
                 },
                 orange: {
                     name: "Orange_Cola",
                     img: "./mediaquery/Orange_Cola.png",
                     price: 1000,
-                    count: 1,
+                    count: 0,
                     stock: 1,
                 },
             };
@@ -285,6 +226,56 @@
                 document.getElementById("wallet_coin").innerHTML =
                     walletCoin.toLocaleString() + "원";
             }
+            // 음료 클릭 시 선택 count를 늘리는 함수
+            function selectItem(id) {
+                count_list = document.getElementsByClassName("count");
+
+                Object.values(drinks)[id].count += 1;
+                if (Object.values(drinks)[id].count > 1) {
+                    alert('여기를 이제 카운트만 늘리도록 해야대는뎅')
+                    this.innerHTML = "100";
+                    // document.getElementsByClassName = Object.values(drinks)[id].count;
+                }
+                else {
+                    addtoSelectedList(id);
+                }
+                
+            }
+
+            // count한 음료 수 만큼 selected-list에 표시해주는 함수
+            function addtoSelectedList(id) {
+                let tagArea = document.getElementById("tagarea");
+                //      <li class="get-drinks">
+                //             <p class="get-drinks-item">
+                //                 <img
+                //                     src="./mediaquery/Original_Cola.png"
+                //                     alt="Original Cola"
+                //                 />
+                //                 <span class="get-drinks-item-name">Original_Cola</span>
+                //             </p>
+                //             <span class="count">1</span>
+                //         </li>
+                // 이거를 <ol class="selected-list"> 아래 노드로 추가
+                const liTag = document.createElement("li");
+                const pTag = document.createElement("p");
+                const imgTag = document.createElement("img");
+                const span1Tag = document.createElement("span");
+                const span2Tag = document.createElement("span");
+                liTag.setAttribute("class", "get-drinks");
+                pTag.setAttribute("class", "get-drinks-item");
+                imgTag.setAttribute("src", Object.values(drinks)[id].img);
+                imgTag.setAttribute("alt", Object.values(drinks)[id].name);
+                span1Tag.setAttribute("class", "get-drinks-item-name");
+                span2Tag.setAttribute("class", "count");
+                
+                tagArea.appendChild(liTag);
+                liTag.appendChild(pTag);
+                pTag.appendChild(imgTag);
+                pTag.appendChild(span1Tag);
+                liTag.appendChild(span2Tag);
+                span1Tag.innerHTML = Object.values(drinks)[id].name;
+                span2Tag.innerHTML = Object.values(drinks)[id].count;
+            }
 
             // drinks 객체에 있는 이미지경로, 금액, 상품 이름만 변경하면 화면에 반영될 수 있도록 처리
             drink_list = document.getElementsByClassName("items-img");
@@ -320,6 +311,5 @@
             document.getElementById("total_price").innerHTML =
                 "총금액 : " + totalPrice.toLocaleString() + "원";
         </script>
-        <!-- <script src="/script.js"></script> -->
     </body>
 </html>
