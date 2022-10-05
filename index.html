@@ -203,10 +203,12 @@
                 // 잔액 차감
                 document.getElementById("balance_result").innerHTML =
                     balance.toLocaleString() + "원";
+
                 // 소지금 증가
                 document.getElementById("wallet_coin").innerHTML =
                     walletCoin.toLocaleString() + "원";
             }
+            
             // 음료 클릭 시 선택 count를 늘리는 함수
             function selectItem(id) { 
                 //재고가 없을 땐 선택할 수 없도록 예외처리
@@ -215,6 +217,7 @@
                     return;
                 }
                 Object.values(drinks)[id].count += 1;
+
                 if (Object.values(drinks)[id].count > 1) {
                     // 이미 선택되어 있다면 새로 생성하지 않고 카운트만 증가
                     document.getElementById(Object.values(drinks)[id].name).innerHTML = Object.values(drinks)[id].count;
@@ -280,21 +283,22 @@
             }
 
             function getDrink() {
-                var totalPrice = 0; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
+                var currentPrice = null;
+                // var totalPrice = t; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
                 for (let i = 0; i < Object.keys(drinks).length; i++) {
-                    totalPrice +=
+                    currentPrice +=
                         parseInt(Object.values(drinks)[i].price) *
                         parseInt(Object.values(drinks)[i].count);
                 }
 
                 // 잔액보다 금액이 많으면 획득할 수 없게 하고
-                if (totalPrice > balance) {
+                if (currentPrice > balance) {
                     alert('잔액을 초과한 금액입니다!')
                     return;
                 }
 
                 // 잔액에서 차감하고 잔액 다시 찍어주기
-                balance -= totalPrice;
+                balance -= currentPrice;
                 document.getElementById("balance_result").innerHTML =
                 balance.toLocaleString() + "원";
 
@@ -337,7 +341,6 @@
                 }
                 
 
-
                 // 선택한 리스트에서 제거
                 var parent = document.getElementById("tagarea");
                 parent.innerHTML = "";
@@ -346,6 +349,8 @@
                 for (let i = 0; i < Object.keys(drinks).length; i++) {
                         Object.values(drinks)[i].count = 0;
                 }
+                totalPrice += currentPrice;
+                currentPrice = 0;
                 // // count들을 합산하여 총금액으로 찍어주기
                 document.getElementById("total_price").innerHTML =
                     "총금액 : " + totalPrice.toLocaleString() + "원";
@@ -374,8 +379,8 @@
             // }
 
             // 잔액을 찍어주는 코드
-            document.getElementById("balance_result").innerHTML =
-                balance.toLocaleString() + "원";
+            // document.getElementById("balance_result").innerHTML =
+            //     balance.toLocaleString() + "원";
 
             //소지금을 찍어주는 코드
             document.getElementById("wallet_coin").innerHTML =
@@ -383,3 +388,4 @@
         </script>
     </body>
 </html>
+\
