@@ -1,4 +1,4 @@
-var drinks = {
+let drinks = {
     // key(키) : {
     //     name(이름):
     //     img(이미지 경로):
@@ -49,16 +49,16 @@ var drinks = {
         stock: 3,
     },
 };
-var walletCoin = 25000; //소지금
-var inputCoin = 10000; // 입금액
+let walletCoin = 25000; //소지금
+let inputCoin = 10000; // 입금액
+let totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
 
-var totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
 for (let i = 0; i < Object.keys(drinks).length; i++) {
     totalPrice +=
         parseInt(Object.values(drinks)[i].price) *
         parseInt(Object.values(drinks)[i].count);
 }
-var balance = inputCoin - totalPrice; //잔액
+let balance = inputCoin - totalPrice; //잔액
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
 function deposit() {
@@ -173,8 +173,8 @@ function addtoSelectedList(id) {
 }
 
 function getDrink() {
-    var currentPrice = null;
-    // var totalPrice = t; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
+    let currentPrice = null;
+    // let totalPrice = t; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
     for (let i = 0; i < Object.keys(drinks).length; i++) {
         currentPrice +=
             parseInt(Object.values(drinks)[i].price) *
@@ -232,7 +232,7 @@ function getDrink() {
     
 
     // 선택한 리스트에서 제거
-    var parent = document.getElementById("tagarea");
+    let parent = document.getElementById("tagarea");
     parent.innerHTML = "";
 
     // count = 0으로 초기화
@@ -251,9 +251,9 @@ drink_list = document.getElementsByClassName("items-img");
 pricetag_list = document.getElementsByClassName("items-pricetag");
 drinks_name = document.getElementsByClassName("items-name");
 for (let i = 0; i < Object.keys(drinks).length; i++) {
-    var src = Object.values(drinks)[i].img;
-    var price = Object.values(drinks)[i].price;
-    var name = Object.values(drinks)[i].name;
+    let src = Object.values(drinks)[i].img;
+    let price = Object.values(drinks)[i].price;
+    let name = Object.values(drinks)[i].name;
     drink_list[i].src = src;
     drink_list[i].alt = name;
     drinks_name[i].innerHTML = name;
