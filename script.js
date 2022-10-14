@@ -42,17 +42,41 @@ let drinks = [
         "stock": 3
     }
 ];
+
 let walletCoin = 25000; //소지금
 let inputCoin = 10000; // 입금액
 let totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
+let itemNum = drinks.length; // 음료의 개수
 
-let itemNum = drinks.length;
 for (let i = 0; i < itemNum; i++) {
     totalPrice +=
         parseInt(drinks[i].price) *
         parseInt(drinks[i].count);
 }
 let balance = inputCoin - totalPrice; //잔액
+
+// drinks 객체에 있는 이미지경로, 금액, 상품 이름만 변경하면 화면에 반영될 수 있도록 처리
+drink_list = document.getElementsByClassName("items-img");
+pricetag_list = document.getElementsByClassName("items-pricetag");
+drinks_name = document.getElementsByClassName("items-name");
+for (let i = 0; i < itemNum; i++) {
+    let src = drinks[i].img;
+    let price = drinks[i].price;
+    let name = drinks[i].name;
+    drink_list[i].src = src;
+    drink_list[i].alt = name;
+    drinks_name[i].innerHTML = name;
+    pricetag_list[i].innerHTML = price + "원";
+}
+
+// 잔액을 찍어주는 코드
+document.getElementById("balance_result").innerHTML =
+    balance.toLocaleString() + "원";
+
+//소지금을 찍어주는 코드
+document.getElementById("wallet_coin").innerHTML =
+    walletCoin.toLocaleString() + "원";
+
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
 function deposit() {
@@ -191,17 +215,6 @@ function getDrink() {
         if (drinks[i].count > 0) {
             // 획득한 음료로 넘기기
             let getArea = document.getElementById("getarea");
-            //      <li class="get-drinks">
-            //          <p class="get-drinks-item">
-            //              <img
-            //                  src="./mediaquery/Original_Cola.png"
-            //                  alt="Original Cola"
-            //              />
-            //              <span class="get-drinks-item-name">Original_Cola</span>
-            //          </p>
-            //          <span class="count">1</span>
-            //      </li>
-            // 이거를 <ol class="selected-list"> 아래 노드로 추가
             const liTag = document.createElement("li");
             const pTag = document.createElement("p");
             const imgTag = document.createElement("img");
@@ -240,32 +253,3 @@ function getDrink() {
         "총금액 : " + totalPrice.toLocaleString() + "원";
 
 }
-// drinks 객체에 있는 이미지경로, 금액, 상품 이름만 변경하면 화면에 반영될 수 있도록 처리
-drink_list = document.getElementsByClassName("items-img");
-pricetag_list = document.getElementsByClassName("items-pricetag");
-drinks_name = document.getElementsByClassName("items-name");
-for (let i = 0; i < itemNum; i++) {
-    let src = drinks[i].img;
-    let price = drinks[i].price;
-    let name = drinks[i].name;
-    drink_list[i].src = src;
-    drink_list[i].alt = name;
-    drinks_name[i].innerHTML = name;
-    pricetag_list[i].innerHTML = price + "원";
-}
-
-// 재고(stock)가 0이 되면 품절 마크를 표시
-// item_list = document.getElementsByClassName("item-li");
-// for (let i = 0; i < Object.keys(drinks).length; i++) {
-//     if (Object.values(drinks)[i].stock == 0) {
-//         item_list[i].classList.add("soldout");
-//     }
-// }
-
-// 잔액을 찍어주는 코드
-document.getElementById("balance_result").innerHTML =
-    balance.toLocaleString() + "원";
-
-//소지금을 찍어주는 코드
-document.getElementById("wallet_coin").innerHTML =
-    walletCoin.toLocaleString() + "원";
