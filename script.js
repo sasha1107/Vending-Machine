@@ -65,6 +65,10 @@ function deposit() {
     inputCoin = parseInt(
         document.getElementById("input-deposit").value
     );
+    if (!(inputCoin)) {
+        alert("금액을 입력해주세요!");
+        return;
+    }
     if (inputCoin > walletCoin) {
         alert("소지금보다 많은 금액을 입금할 수 없습니다!");
         return;
