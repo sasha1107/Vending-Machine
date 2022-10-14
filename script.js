@@ -52,8 +52,8 @@ let drinks = {
 let walletCoin = 25000; //소지금
 let inputCoin = 10000; // 입금액
 let totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
-
-for (let i = 0; i < Object.keys(drinks).length; i++) {
+let itemnum = Object.keys(drinks).length;
+for (let i = 0; i < itemnum; i++) {
     totalPrice +=
         parseInt(Object.values(drinks)[i].price) *
         parseInt(Object.values(drinks)[i].count);
@@ -115,7 +115,7 @@ function selectItem(id) {
 
         // 재고(stock)가 0이 되면 품절 마크를 표시
         item_list = document.getElementsByClassName("item-li");
-        for (let i = 0; i < Object.keys(drinks).length; i++) {
+        for (let i = 0; i < itemnum; i++) {
             if (Object.values(drinks)[i].stock == 0) {
                 item_list[i].classList.add("soldout");
             }
@@ -127,7 +127,7 @@ function selectItem(id) {
 
         // 재고(stock)가 0이 되면 품절 마크를 표시
         item_list = document.getElementsByClassName("item-li");
-        for (let i = 0; i < Object.keys(drinks).length; i++) {
+        for (let i = 0; i < itemnum; i++) {
             if (Object.values(drinks)[i].stock == 0) {
                 item_list[i].classList.add("soldout");
             }
@@ -175,7 +175,7 @@ function addtoSelectedList(id) {
 function getDrink() {
     let currentPrice = null;
     // let totalPrice = t; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
-    for (let i = 0; i < Object.keys(drinks).length; i++) {
+    for (let i = 0; i < itemnum; i++) {
         currentPrice +=
             parseInt(Object.values(drinks)[i].price) *
             parseInt(Object.values(drinks)[i].count);
@@ -193,7 +193,7 @@ function getDrink() {
     balance.toLocaleString() + "원";
 
     
-    for (let i = 0; i < Object.keys(drinks).length; i++) {
+    for (let i = 0; i < itemnum; i++) {
         if (Object.values(drinks)[i].count > 0) {
             // 획득한 음료로 넘기기
             let getArea = document.getElementById("getarea");
@@ -236,7 +236,7 @@ function getDrink() {
     parent.innerHTML = "";
 
     // count = 0으로 초기화
-    for (let i = 0; i < Object.keys(drinks).length; i++) {
+    for (let i = 0; i < itemnum; i++) {
             Object.values(drinks)[i].count = 0;
     }
     totalPrice += currentPrice;
@@ -250,7 +250,7 @@ function getDrink() {
 drink_list = document.getElementsByClassName("items-img");
 pricetag_list = document.getElementsByClassName("items-pricetag");
 drinks_name = document.getElementsByClassName("items-name");
-for (let i = 0; i < Object.keys(drinks).length; i++) {
+for (let i = 0; i < itemnum; i++) {
     let src = Object.values(drinks)[i].img;
     let price = Object.values(drinks)[i].price;
     let name = Object.values(drinks)[i].name;
