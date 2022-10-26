@@ -91,12 +91,10 @@ getBtn.addEventListener("click", getDrink);
 // 금액 업데이트 함수
 function update(){
     // 잔액을 찍어주는 코드
-    document.getElementById("balance_result").textContent =
-        balance.toLocaleString() + "원";
+    machineFunc.querySelector(".balance_result").textContent = balance.toLocaleString() + "원";
 
     //소지금을 찍어주는 코드
-    document.getElementById("wallet_coin").textContent =
-        walletCoin.toLocaleString() + "원";
+    pocket.querySelector(".wallet_coin").textContent = walletCoin.toLocaleString() + "원";
 }
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
@@ -142,7 +140,7 @@ function selectItem(id) {
         drinks[id].stock -= 1;
 
         // 재고(stock)가 0이 되면 품절 마크를 표시
-        item_list = document.getElementsByClassName("item-li");
+        item_list = machineItems.getElementsByClassName("item-li");
         for (let i = 0; i < itemNum; i++) {
             if (drinks[i].stock == 0) {
                 item_list[i].classList.add("soldout");
@@ -154,7 +152,7 @@ function selectItem(id) {
         drinks[id].stock -= 1;
 
         // 재고(stock)가 0이 되면 품절 마크를 표시
-        item_list = document.getElementsByClassName("item-li");
+        item_list = machineItems.getElementsByClassName("item-li");
         for (let i = 0; i < itemNum; i++) {
             if (drinks[i].stock == 0) {
                 item_list[i].classList.add("soldout");
@@ -238,8 +236,8 @@ function getDrink() {
             pTag.appendChild(imgTag);
             pTag.appendChild(span1Tag);
             liTag.appendChild(span2Tag);
-            span1Tag.innerHTML = drinks[i].name;
-            span2Tag.innerHTML = drinks[i].count;
+            span1Tag.textContent = drinks[i].name;
+            span2Tag.textContent = drinks[i].count;
         }
     }
 
@@ -254,7 +252,7 @@ function getDrink() {
     totalPrice += currentPrice;
     currentPrice = 0;
     // // count들을 합산하여 총금액으로 찍어주기
-    document.getElementById("total_price").innerHTML =
+    pocket.querySelector(".total-price").textContent =
         "총금액 : " + totalPrice.toLocaleString() + "원";
 
 }
