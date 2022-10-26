@@ -69,13 +69,18 @@ for (let i = 0; i < itemNum; i++) {
     pricetag_list[i].innerHTML = price + "원";
 }
 
-// 잔액을 찍어주는 코드
-document.getElementById("balance_result").innerHTML =
+function update(){
+    // 잔액을 찍어주는 코드
+    document.getElementById("balance_result").textContent =
     balance.toLocaleString() + "원";
 
-//소지금을 찍어주는 코드
-document.getElementById("wallet_coin").innerHTML =
+    //소지금을 찍어주는 코드
+    document.getElementById("wallet_coin").textContent =
     walletCoin.toLocaleString() + "원";
+}
+
+
+update();
 
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
@@ -95,12 +100,7 @@ function deposit() {
     // 입금 시 소지금에서 차감
     walletCoin -= inputCoin;
 
-    // 잔액 증가
-    document.getElementById("balance_result").innerHTML =
-        balance.toLocaleString() + "원";
-    // 소지금 차감
-    document.getElementById("wallet_coin").innerHTML =
-        walletCoin.toLocaleString() + "원";
+    update();
 }
 
 // 거스름돈을 반환하는 함수
@@ -108,13 +108,7 @@ function changeBalance() {
     walletCoin += balance;
     balance = 0;
 
-    // 잔액 차감
-    document.getElementById("balance_result").innerHTML =
-        balance.toLocaleString() + "원";
-
-    // 소지금 증가
-    document.getElementById("wallet_coin").innerHTML =
-        walletCoin.toLocaleString() + "원";
+    update();
 }
 
 // 음료 클릭 시 선택 count를 늘리는 함수
@@ -207,8 +201,7 @@ function getDrink() {
 
     // 잔액에서 차감하고 잔액 다시 찍어주기
     balance -= currentPrice;
-    document.getElementById("balance_result").innerHTML =
-    balance.toLocaleString() + "원";
+    update();
 
     
     for (let i = 0; i < itemNum; i++) {
