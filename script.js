@@ -71,17 +71,14 @@ for (let i = 0; i < itemNum; i++) {
 
 function update(){
     // 잔액을 찍어주는 코드
-    document.getElementById("balance_result").textContent =
-    balance.toLocaleString() + "원";
+    document.getElementById("balance_result").innerHTML =
+        balance.toLocaleString() + "원";
 
     //소지금을 찍어주는 코드
-    document.getElementById("wallet_coin").textContent =
-    walletCoin.toLocaleString() + "원";
+    document.getElementById("wallet_coin").innerHTML =
+        walletCoin.toLocaleString() + "원";
 }
-
-
 update();
-
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
 function deposit() {
@@ -202,7 +199,6 @@ function getDrink() {
     // 잔액에서 차감하고 잔액 다시 찍어주기
     balance -= currentPrice;
     update();
-
     
     for (let i = 0; i < itemNum; i++) {
         if (drinks[i].count > 0) {
