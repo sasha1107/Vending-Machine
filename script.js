@@ -49,41 +49,60 @@ let totalPrice = 0; //총 금액 (총금엑 += 음료가격 * 음료 개수)
 let itemNum = drinks.length; // 음료의 개수
 
 for (let i = 0; i < itemNum; i++) {
-    totalPrice +=
-        parseInt(drinks[i].price) *
-        parseInt(drinks[i].count);
+    totalPrice += +(drinks[i].price) * +(drinks[i].count);
 }
 let balance = inputCoin - totalPrice; //잔액
 
+
+// DOM API
+const machineItems = document.querySelector(".machine-items");
+const machineFunc = document.querySelector(".machine-func");
+const pocket = document.querySelector(".pocket");
+
 // drinks 객체에 있는 이미지경로, 금액, 상품 이름만 변경하면 화면에 반영될 수 있도록 처리
-drink_list = document.getElementsByClassName("items-img");
-pricetag_list = document.getElementsByClassName("items-pricetag");
-drinks_name = document.getElementsByClassName("items-name");
+drink_list = [...machineItems.querySelectorAll(".items-img")];
+pricetag_list = [...machineItems.querySelectorAll(".items-pricetag")];
+drinks_name = [...machineItems.querySelectorAll(".items-name")];
+
 for (let i = 0; i < itemNum; i++) {
     let src = drinks[i].img;
     let price = drinks[i].price;
     let name = drinks[i].name;
     drink_list[i].src = src;
     drink_list[i].alt = name;
-    drinks_name[i].innerHTML = name;
-    pricetag_list[i].innerHTML = price + "원";
+    drinks_name[i].textContent = name;
+    pricetag_list[i].textContent = price + "원";
 }
 
+update();
+
+// 입금버튼
+const inputBtn = machineFunc.querySelector(".btn-payment"); 
+inputBtn.addEventListener("click", deposit);
+
+// 거스름돈 반환 버튼
+const changeBtn = machineFunc.querySelector(".btn-change");
+changeBtn.addEventListener("click", changeBalance);
+
+// 획득 버튼
+const getBtn = machineFunc.querySelector(".btn-get");
+getBtn.addEventListener("click", getDrink);
+
+// 금액 업데이트 함수
 function update(){
     // 잔액을 찍어주는 코드
-    document.getElementById("balance_result").innerHTML =
+    document.getElementById("balance_result").textContent =
         balance.toLocaleString() + "원";
 
     //소지금을 찍어주는 코드
-    document.getElementById("wallet_coin").innerHTML =
+    document.getElementById("wallet_coin").textContent =
         walletCoin.toLocaleString() + "원";
 }
-update();
 
 // 인풋창에서 입금액 입력 시 더해주는 함수
 function deposit() {
     inputCoin = parseInt(
-        document.getElementById("input-deposit").value
+        machineFunc.querySelector(".input-payment").value
     );
     if (!(inputCoin)) {
         alert("금액을 입력해주세요!");
@@ -97,6 +116,7 @@ function deposit() {
     // 입금 시 소지금에서 차감
     walletCoin -= inputCoin;
 
+    machineFunc.querySelector(".input-payment").value = null;
     update();
 }
 
@@ -104,7 +124,6 @@ function deposit() {
 function changeBalance() {
     walletCoin += balance;
     balance = 0;
-
     update();
 }
 
@@ -147,7 +166,7 @@ function selectItem(id) {
 
 // count한 음료 수 만큼 selected-list에 표시해주는 함수
 function addtoSelectedList(id) {
-    let tagArea = document.getElementById("tagarea");
+    let selectarea = document.getElementById("selectarea");
     //      <li class="get-drinks">
     //          <p class="get-drinks-item">
     //              <img
@@ -171,8 +190,7 @@ function addtoSelectedList(id) {
     span1Tag.setAttribute("class", "get-drinks-item-name");
     span2Tag.setAttribute("class", "count");
     span2Tag.setAttribute("id", drinks[id].name);
-    
-    tagArea.appendChild(liTag);
+    selectarea.appendChild(liTag);
     liTag.appendChild(pTag);
     pTag.appendChild(imgTag);
     pTag.appendChild(span1Tag);
@@ -183,11 +201,10 @@ function addtoSelectedList(id) {
 
 function getDrink() {
     let currentPrice = null;
-    // let totalPrice = t; // 총 금액 (총금엑 += 음료가격 * 음료 개수)
     for (let i = 0; i < itemNum; i++) {
         currentPrice +=
-            parseInt(drinks[i].price) *
-            parseInt(drinks[i].count);
+            +(drinks[i].price) *
+            +(drinks[i].count);
     }
 
     // 잔액보다 금액이 많으면 획득할 수 없게 하고
@@ -225,10 +242,9 @@ function getDrink() {
             span2Tag.innerHTML = drinks[i].count;
         }
     }
-    
 
     // 선택한 리스트에서 제거
-    let parent = document.getElementById("tagarea");
+    let parent = document.getElementById("selectarea");
     parent.innerHTML = "";
 
     // count = 0으로 초기화

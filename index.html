@@ -64,7 +64,7 @@
                         <h4>잔액:</h4>
                         <span id="balance_result">0원</span>
                     </div>
-                    <button class="btn-change" onclick="changeBalance()">
+                    <button class="btn-change">
                         거스름돈 반환
                     </button>
                     <!-- 숫자만 입력될 수 있도록 정규식표현 사용-->
@@ -73,23 +73,20 @@
                         type="text"
                         onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
                         placeholder="입금액 입력"
-                        id="input-deposit"
                     />
                     <button
                         class="btn-payment"
                         type="button"
-                        onclick="deposit()"
                     >
                         입금
                     </button>
-                    <!-- button type: button인가 submit인가 -->
                     <div class="selected">
                         <h4 class="txt-hide">선택한 음료 리스트</h4>
-                        <ol class="selected-list" id="tagarea">
+                        <ol class="selected-list" id="selectarea">
                         
                         </ol>
                     </div>
-                    <button class="btn-get" onclick="getDrink()">획득</button>
+                    <button class="btn-get">획득</button>
                 </div>
             </article>
             <div class="pocket">
