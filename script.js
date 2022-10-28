@@ -58,6 +58,14 @@ let balance = inputCoin - totalPrice; //잔액
 const machineItems = document.querySelector(".machine-items");
 const machineFunc = document.querySelector(".machine-func");
 const pocket = document.querySelector(".pocket");
+const itemList = [...document.querySelectorAll(".item-li")];
+
+// 아이템 클릭 이벤트 달아주기
+itemList.forEach((item, index) => {
+    item.addEventListener("click", ()=>{
+        selectItem(index);
+    });
+})
 
 // drinks 객체에 있는 이미지경로, 금액, 상품 이름만 변경하면 화면에 반영될 수 있도록 처리
 drink_list = [...machineItems.querySelectorAll(".items-img")];
