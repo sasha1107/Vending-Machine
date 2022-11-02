@@ -1,42 +1,43 @@
+// **** 변수선언 ****
 let drinks = [
     {
         "name": "Original_Cola",
-        "img": "./mediaquery/Original_Cola.png",
+        "img": "./src/img/Original_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
     },
     {
         "name": "Violet_Cola",
-        "img": "./mediaquery/Violet_Cola.png",
+        "img": "./src/img/Violet_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
     },
     {
         "name": "Yellow_Cola",
-        "img": "./mediaquery/Yellow_Cola.png",
+        "img": "./src/img/Yellow_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
     },
     {
         "name": "Cool_Cola",
-        "img": "./mediaquery/Cool_Cola.png",
+        "img": "./src/img/Cool_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
     },
     {
         "name": "Green_Cola",
-        "img": "./mediaquery/Green_Cola.png",
+        "img": "./src/img/Green_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
     },
     {
         "name": "Orange_Cola",
-        "img": "./mediaquery/Orange_Cola.png",
+        "img": "./src/img/Orange_Cola.png",
         "price": 1000,
         "count": 0,
         "stock": 3
@@ -61,7 +62,6 @@ const getBtn = machineFunc.querySelector(".btn-get"); // 획득 버튼
 
 
 // **** 이벤트 추가 ****
-
 itemList.forEach((item, index) => {
     item.addEventListener("click", ()=>{
         selectItem(index);
@@ -72,11 +72,10 @@ changeBtn.addEventListener("click", changeBalance);
 getBtn.addEventListener("click", getDrink);
 
 
-// drinks 객체에 있는 이미지경로, 금액, 상품 이름 디스플레이
+// **** drinks 객체 디스플레이 ****
 drink_list = [...machineItems.querySelectorAll(".items-img")];
 pricetag_list = [...machineItems.querySelectorAll(".items-pricetag")];
 drinks_name = [...machineItems.querySelectorAll(".items-name")];
-
 for (let i = 0; i < itemNum; i++) {
     let src = drinks[i].img;
     let price = drinks[i].price;
@@ -86,7 +85,6 @@ for (let i = 0; i < itemNum; i++) {
     drinks_name[i].textContent = name;
     pricetag_list[i].textContent = price + "원";
 }
-
 update();
 
 
@@ -177,7 +175,6 @@ function addtoSelectedList(id) {
     //          </p>
     //          <span class="count">1</span>
     //      </li>
-    // 이거를 <ol class="selected-list"> 아래 노드로 추가
     const liTag = document.createElement("li");
     const pTag = document.createElement("p");
     const imgTag = document.createElement("img");

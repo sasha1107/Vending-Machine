@@ -84,7 +84,7 @@ body {
     content: "품절";
     color: transparent;
     background-color: rgba(0, 0, 0, 0.8);
-    background-image: url(../mediaquery/Sold-out.png);
+    background-image: url(../../src/img/Sold-out.png);
     background-size: 62%;
     background-repeat: no-repeat;
     background-position: 50% 50%;
