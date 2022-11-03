@@ -5,7 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Vending Machine</title>
-
         <link rel="stylesheet" href="./src/style/reset.css">
         <link rel="stylesheet" href="./src/style/style.css">
         <!-- <link rel="stylesheet" href="./style/style_scss.css" /> -->
@@ -13,11 +12,7 @@
     <body>
         <header>
             <h1>
-                <img
-                    class="header-img"
-                    src="./src/img/Logo_img.png"
-                    alt="cola cola"
-                >
+                <img class="header-img" src="./src/img/Logo_img.png" alt="cola cola">
             </h1>
         </header>
         <section class="container">
@@ -27,6 +22,7 @@
                 <div class="machine-items">
                     <h4 class="txt-hide">음료 목록</h4>
                     <ol class="machine-items-list">
+                        <!-- 음료 목록 JS로 디스플레이 -->
                     </ol>
                 </div>
                 <div class="machine-func">
@@ -53,7 +49,7 @@
                     <div class="selected">
                         <h4 class="txt-hide">선택한 음료 리스트</h4>
                         <ol class="selected-list" id="selectarea">
-                        
+                            <!-- 선택 목록 JS로 디스플레이 -->
                         </ol>
                     </div>
                     <button class="btn-get">획득</button>
@@ -70,6 +66,7 @@
                 <article class="earned">
                     <h4>획득한 음료</h4>
                     <ol class="selected-list" id="getarea">
+                        <!-- 획득 목록 JS로 디스플레이 -->
                     </ol>
                     <span class="total-price">
                         총금액: 0원
@@ -77,6 +74,6 @@
                 </article>
             </div>
         </section>
-        <script src="./src/script/script.js"></script>
+        <script src="./src/js/script.js"></script>
     </body>
 </html>

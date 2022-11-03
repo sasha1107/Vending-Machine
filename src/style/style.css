@@ -1,3 +1,4 @@
+/* ----- 폰트 ----- */
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 * {
@@ -21,7 +22,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 28px;
-    /* align-items: center; */
 }
 
 .txt-hide {
@@ -35,7 +35,6 @@ body {
 
 /* 자판기 */
 .machine {
-    /* width: 360px; */
     background-color: #ffffff;
     padding: 31px 27px 28px;
 }
@@ -55,6 +54,7 @@ body {
     font-size: 9px;
     line-height: 13px;
 }
+
 .machine-items-list li {
     background-color: #ffffff;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
@@ -67,15 +67,18 @@ body {
     cursor: pointer;
     position: relative;
 }
+
 /* soldout 클래스는 아웃라인 안보이게 적용 */
 .machine-items-list li:hover:not(.soldout) {
     outline: 3px solid #6327fe;
 }
+
 /* 클릭했을 때 */
-.machine-items-list li:active:not(.soldout) {
+.machine-items-list .item-li:active:not(.soldout) {
     background-color: #6327fe;
     color: #ffffff;
 }
+
 /* 매진된 항목 품절 처리 */
 .soldout::before {
     position: absolute;
@@ -92,42 +95,21 @@ body {
 
 .items-img {
     margin: 0 auto;
-    /* margin-top: 11px; */
     margin-bottom: 3px;
     width: 36px;
     height: 65px;
-    /* background-image: url(./mediaquery/cola_sprites.png); */
-    /* background-size: 276px 75px; */
 }
+
 .items-pricetag {
     display: block;
     margin-top: 6px;
     background: #6327fe;
     color: #ffffff;
     border-radius: 50px;
-    /* width: 70px; */
     height: auto;
     padding: 5px 16px 5px 15px;
     font-size: 12px;
 }
-/* .original_cola {
-    background-position: -97px -5px;
-}
-.violet_cola {
-    background-position: -5px -5px;
-}
-.yellow_cola {
-    background-position: -51px -5px;
-}
-.cool_cola {
-    background-position: -143px -5px;
-}
-.green_cola {
-    background-position: -189px -5px;
-}
-.orange_cola {
-    background-position: -235px -5px;
-} */
 
 /* 자판기 기능 */
 .machine .machine-func {
@@ -141,6 +123,7 @@ body {
         "selected btn-get";
     gap: 12px;
 }
+
 .machine-func .balance {
     grid-area: balance;
     display: flex;
@@ -156,6 +139,7 @@ body {
 .machine-func .btn-change {
     grid-area: btn-change;
 }
+
 .machine-func .input-payment {
     grid-area: input-payment;
     box-sizing: border-box;
@@ -163,6 +147,7 @@ body {
     border-radius: 5px;
     padding: 6px;
 }
+
 .machine-func .btn-payment {
     grid-area: btn-payment;
 }
@@ -174,15 +159,18 @@ body {
     font-size: 13px;
     line-height: 19px;
 }
+
 .machine-func .btn-change:hover,
 .machine-func .btn-payment:hover {
     background-color: #eae8fe;
 }
+
 .machine-func .btn-change:active,
 .machine-func .btn-payment:active {
     background-color: #6327fe;
     color: #ffffff;
 }
+
 .machine-func .selected {
     box-sizing: border-box;
     grid-area: selected;
@@ -193,15 +181,18 @@ body {
     overflow: scroll;
     padding: 12px 18px 12px 12px;
 }
+
 .machine-func .selected .selected-list {
     border-style: none;
-    /* height: 106px; */
-    /* overflow: scroll; */
-    /* padding: 12px 18px 12px 12px; */
     display: flex;
     flex-direction: column;
-    /* gap: 6px; */
 }
+
+.machine-func .get-drinks {
+    cursor: pointer;
+}
+
+/* 선택, 획득리스트 공통 스타일 */
 .get-drinks {
     display: flex;
     justify-content: space-between;
@@ -212,11 +203,13 @@ body {
     align-items: center;
     font-size: 9px;
 }
+
 .get-drinks .get-drinks-item {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .get-drinks .get-drinks-item img {
     width: 18px;
     margin-right: 10px;
@@ -230,14 +223,15 @@ body {
     border-radius: 5px;
     font-size: 14px;
     line-height: 20px;
-    /* text-align: center; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .get-drinks + .get-drinks {
     margin-top: 6px;
 }
+
 .machine-func .btn-get {
     grid-area: btn-get;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
@@ -245,16 +239,16 @@ body {
     background: #6327fe;
     color: #ffffff;
 }
+
 .machine-func .btn-get:hover,
 .machine-func .btn-get:active {
     background-color: #eb5757;
 }
+
 .pocket {
     display: flex;
     flex-direction: column;
     width: 360px;
-    /* background-color: bisque; */
-    /* gap: 20px; */
     justify-content: space-between;
 }
 
@@ -263,6 +257,7 @@ body {
     background-color: #ffffff;
     padding: 9px 27px;
 }
+
 .pocket .wallet .wallet-box {
     background-color: #eae8fe;
     display: flex;
@@ -273,31 +268,40 @@ body {
     border-radius: 5px;
     padding: 6px 10px;
 }
+
 /* 획득한 음료 */
 .pocket .earned {
     background-color: #ffffff;
     padding: 25px 27px 26px;
     text-align: right;
 }
+
 .pocket .earned h4 {
     text-align: center;
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
 }
+
 .pocket .earned .selected-list {
     box-sizing: border-box;
     background: #eae8fe;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
     overflow: scroll;
     padding: 12px 18px 12px 12px;
     margin-top: 16px;
     height: 364px;
 }
+
 .pocket .earned .total-price {
     font-size: 12px;
     line-height: 17px;
     margin-top: 6px;
 }
+
+
+/* ----- 반응형디자인 ----- */
 /* 화면이 작아졌을 때 배치를 세로로 */
 @media screen and (max-width: 748px) {
     body {
