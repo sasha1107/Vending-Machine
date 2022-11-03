@@ -51,6 +51,29 @@ let itemNum = drinks.length; // 음료의 개수
 let balance = 0; //잔액
 
 
+// **** drinks 객체 디스플레이 ****
+let domFrag = document.createDocumentFragment();
+for (let i = 0; i < itemNum; i++) {
+    let item_Li = document.createElement("li");
+    let item_Img = document.createElement("img");
+    let p_itemName = document.createElement("p");
+    let span_priceTag = document.createElement("span");
+    item_Li.setAttribute("class", "item-li");
+    item_Img.setAttribute("class", "items-img");
+    item_Img.setAttribute("src", drinks[i].img);
+    item_Img.setAttribute("alt", drinks[i].name);
+    p_itemName.setAttribute("class", "items-name");
+    span_priceTag.setAttribute("class", "items-pricetag");
+    p_itemName.textContent = drinks[i].name;
+    span_priceTag.textContent  = drinks[i].price + "원"
+    item_Li.appendChild(item_Img);
+    item_Li.appendChild(p_itemName);
+    item_Li.appendChild(span_priceTag);
+    domFrag.appendChild(item_Li);
+}
+document.querySelector(".machine-items-list").appendChild(domFrag);
+
+
 // **** DOM API ****
 const machineItems = document.querySelector(".machine-items");
 const machineFunc = document.querySelector(".machine-func");
@@ -72,24 +95,7 @@ changeBtn.addEventListener("click", changeBalance);
 getBtn.addEventListener("click", getDrink);
 
 
-// **** drinks 객체 디스플레이 ****
-drink_list = [...machineItems.querySelectorAll(".items-img")];
-pricetag_list = [...machineItems.querySelectorAll(".items-pricetag")];
-drinks_name = [...machineItems.querySelectorAll(".items-name")];
-for (let i = 0; i < itemNum; i++) {
-    let src = drinks[i].img;
-    let price = drinks[i].price;
-    let name = drinks[i].name;
-    drink_list[i].src = src;
-    drink_list[i].alt = name;
-    drinks_name[i].textContent = name;
-    pricetag_list[i].textContent = price + "원";
-}
-update();
-
-
 // **** 함수선언문 ****
-
 // 금액 업데이트 함수 update()
 function update(){
     // 잔액을 찍어주는 코드
@@ -102,7 +108,7 @@ function update(){
     pocket.querySelector(".total-price").textContent =
         "총금액 : " + totalPrice.toLocaleString() + "원";
 }
-
+update();
 // 입금 기능 함수 deposit()
 function deposit() {
     inputCoin = parseInt(
@@ -138,7 +144,7 @@ function selectItem(id) {
         alert("재고가 없습니다!")
         return;
     }
-    if (balance - calTotalPrice() < drinks[id].price){
+    if (balance < drinks[id].price){
         alert("잔액이 부족하여 상품을 담을 수 없습니다!");
         return;
     }
@@ -160,6 +166,8 @@ function selectItem(id) {
             item_list[i].classList.add("soldout");
         }
     }
+    balance -= drinks[id].price;
+    update();
 }
 
 // 카운트한 음료수를 출력하는 함수 addtoSelectedList(id)
@@ -220,7 +228,7 @@ function getDrink() {
     });
     selectOl.innerHTML = "";
     totalPrice += calTotalPrice();
-    balance -= calTotalPrice();
+    // balance -= calTotalPrice();
     update();
     for (let i=0; i < itemNum; i++){
         drinks[i].count = 0;
@@ -260,5 +268,7 @@ function cancel(tag){
             item_list[i].classList.remove("soldout");
         }
     }
+    balance += drinks[index].price;
+    update();
     alert("상품 선택 취소!");
 }
