@@ -1,0 +1,25 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "description": "미디어 쿼리를 통해 반응형 디자인의 자판기를 구현하는 프로젝트",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sasha1107/Vending-Machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sasha1107/Vending-Machine/issues"
+  },
+  "homepage": "https://github.com/sasha1107/Vending-Machine#readme",
+  "dependencies": {
+    "typescript": "^4.9.5"
+  }
+}
